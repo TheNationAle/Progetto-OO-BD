@@ -1,3 +1,5 @@
+#Commenti e spiegazioni sull'SQL#
+
 Nella tabela Natnate, Abbiamo reso Not Null:
 Compagnia perché ogni Natante è posseduto da una compagnia;
 Nome perché ogni Natante ha un proprio nome;
