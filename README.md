@@ -19,7 +19,6 @@ Nella tabella Cadenza, Periodo_I e Periodo_F sono not null perché ogni cadenza 
 Giorno è Not Null perché i giorni in cui opera Cadenza non possono non esistere.
 
 Nella tabella Corsa abbiamo reso not null gli attributi:
-ID_Natante perché ogni corsa deve essere effettuata obbligatoriamente da un Natante;
 OrarioP e OrarioA perché ogni corsa deve avere un orario di corsa e un orario di arrivo;
 PrezzoI e PrezzR perché ogni corsa deve avere un prezzo intero e uno ridotto;
 ID_Cadenza perché ad ogni appartiene una cadenza.
