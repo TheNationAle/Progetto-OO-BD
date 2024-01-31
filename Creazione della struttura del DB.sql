@@ -48,7 +48,7 @@ CREATE TABLE Corsa (
     	Prezzo_R DECIMAL(5,2) NOT NULL,
     	Partenza VARCHAR(255),
 	Arrivo VARCHAR(255),
-	ID_cadenza INT NOT NULL,
+	ID_cadenza INT,
 	
 	FOREIGN KEY (ID_cadenza) REFERENCES Cadenza(Id_Cadenza)
 	ON DELETE SET NULL,
@@ -158,6 +158,9 @@ AND EXTRACT(YEAR FROM cliente.data_n) >= 1900);
 
 ALTER TABLE corsa
 ADD CONSTRAINT natanteValido CHECK( (id_natante is not null) OR ( (id_natante is null) AND (cancellazione = true) ));
+
+ALTER TABLE corsa
+ADD CONSTRAINT cadeenzaValida CHECK( (id_cadenza is not null) OR ( (id_cadenza is null) AND (cancellazione = true) ));
 
 
 --TRIGGER
