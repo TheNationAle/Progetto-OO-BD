@@ -516,3 +516,21 @@ $destinazioneTrigger$ LANGUAGE plpgsql;
 CREATE OR REPLACE TRIGGER inserisciPosti
 AFTER INSERT ON corsa
 FOR EACH ROW EXECUTE FUNCTION public.inserisciPostif();
+
+--
+
+CREATE OR REPLACE FUNCTION eliminaCadenzaF() RETURNS TRIGGER AS $destinazioneTrigger$
+DECLARE
+	corse CURSOR FOR SELECT * FROM corsa WHERE id_cadenza = OLD.id_cadenza;
+BEGIN
+	FOR cor IN corse LOOP
+		UPDATE corsa SET cancellazione = TRUE WHERE id_corsa = cor.id_corsa;
+	END LOOP;
+RETURN OLD;
+END;
+$destinazioneTrigger$ LANGUAGE plpgsql;
+
+
+CREATE OR REPLACE TRIGGER eliminaCadenza
+BEFORE DELETE ON cadenza
+FOR EACH ROW EXECUTE FUNCTION public.eliminaCadenzaF();
